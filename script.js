@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const swiper = new Swiper('.services__wrapper.swiper', {
         speed: 400,
-        spaceBetween: 100,
+        spaceBetween: 40,
         loop: true,
         slidesPerView: 1,
         navigation: {
@@ -53,10 +53,29 @@ document.addEventListener('DOMContentLoaded', function () {
             prevEl: '.arrow-prev'
         },
         breakpoints: {
-            1024: {
-                slidesPerView: 2,
+            600: {
+                slidesPerView: 2
             },
-            1200: {
+            900: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+    const prodswiper = new Swiper('.products__wrapper.swiper', {
+        speed: 400,
+        spaceBetween: 20,
+        loop: true,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.arrow-next',
+            prevEl: '.arrow-prev'
+        },
+        breakpoints: {
+            700: {
+                slidesPerView: 2
+            },
+            900: {
                 slidesPerView: 3
             }
         }

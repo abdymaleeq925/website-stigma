@@ -280,13 +280,13 @@ p {
         display: block;
         z-index: 3;
         width: 250px;
-        right: 22%;
+        right: 21%;
         top: -200%;
         border-style: double;
         background-color: #fff;
         transition: all .2s ease;
         &.show-menu {
-            right: 22%;
+            right: 21%;
             top: 0%;
         }
         .close__btn { text-align: end; font-size: 24px;}
@@ -344,7 +344,7 @@ p {
 .services {
     @include block;
     img {
-        width: 100%;
+        width: auto;
         border-bottom: 1px solid #808080;
         padding-bottom: 40px;
     }
@@ -359,10 +359,7 @@ p {
         display: none;
         justify-content: center;
     }
-    &__slider {
-        @include wrapper ($gap: 55px);
-        margin-top: 72px;
-    }
+    &__slider { margin-top: 72px; }
     &__controls { margin-top: 55px; }
     .arrow {
         width: 85px;
@@ -391,14 +388,11 @@ p {
     }
 
     &__slide {
-        flex-shrink: unset;
         padding: 36.69px 23.5px;
         background-color: #F9F9F9;
         border-radius: 20px;
-        width: calc(33.3% - 55px);
-        height: 100%;
+        height: auto;
         text-align: center;
-
         &.active {
             background-color: var(#3461ff);
             color: #fff;
@@ -504,14 +498,48 @@ p {
 
 .products {
     @include block;
-    &__list {
-        @include wrapper($align: none, $justify: space-between, $gap: 20px);
-        margin-top: 72px;
+    &__heading {
+        display: none;
+        justify-content: center;
     }
-    &-item {
-        border-radius: 20px;
+    &__slider { margin-top: 72px; }
+    &__controls { margin-top: 55px; }
+    .arrow {
+        width: 85px;
+        height: 85px;
+        border-radius: 100%;
+        border: none;
+        cursor: pointer;
+
+        &.arrow-prev {
+            background-color: #f8f9ff;
+
+            svg {
+                transform: rotate(180deg);
+
+                path {
+                    fill: #a5a5a5;
+                }
+            }
+        }
+        &.arrow-next {
+            background-color: #f8f9ff;
+            path {
+                fill: #a5a5a5;
+            }
+        }
+    }
+
+    &__slide {
+        padding: 36.69px 23.5px;
         background-color: #FAFAFA;
+        border-radius: 20px;
+        height: auto;
         text-align: center;
+        &.active {
+            background-color: var(#3461ff);
+            color: #fff;
+        }
     }
     &-description {
         margin: 73px 40px;
@@ -519,14 +547,12 @@ p {
         text-align: left;
     }
     &-image {
-        margin: 73px 45px;
-        margin-top: 0;
+        width: auto;
         padding-top: 40px;
         border-top: 1px solid #808080;
     }
     &-image2 {
-        padding-left: 32px;
-        padding-right: 32px;
+        width: auto;
         padding-top: 40px;
         padding-bottom: 40px;
         border-bottom: 1px solid #808080;
@@ -817,7 +843,6 @@ p {
     }
     .services {
         &__heading { display: flex; }
-        &__slide { flex-shrink: 0; }
     }
     .why-stigma {
         &__top {
@@ -834,6 +859,7 @@ p {
         }
     }
     .products {
+        &__heading { display: flex; }
         &__list {
             flex-wrap: wrap;
             justify-content: center;
@@ -859,6 +885,18 @@ p {
     }
 }
 @media screen and (max-width: 767px) {
+    .header {
+        .burger-menu {
+            right: 27%;
+            width: 225px;
+            .links li {padding: 0.6rem;}
+            .links li a {font-size: 14px;}
+            &.show-menu {
+                right: 27%;
+            }
+            
+        }
+    }
     .sponsors {
         &__wrapper {
             flex-wrap: wrap;
@@ -903,7 +941,14 @@ p {
 }
 @media screen and (max-width: 480px) {
     .h2 {font-size: 34px;}
+    
     .header { 
+        .burger-menu {
+            right: 20%;
+            &.show-menu {
+                right: 20%;
+            }
+        }
         &__logo { width: 140px; margin: 0;} 
         &__cta { gap: 7px; align-items: center; }
         .btn { height: 40px; font-size: 11px;}
@@ -913,10 +958,12 @@ p {
         p { font-size: 14px; line-height: 26px; }
         a { font-size: 12px; height: 45px;}
     }
-    .sponsors { margin-top: 6em; }
+    .sponsors { 
+        margin-top: 6em; 
+    }
     .services { 
         margin-top: 6em;
-
+        .arrow { width: 60px; height: 60px; }
     }
     .why-stigma {
         margin-top: 6em;
@@ -924,20 +971,36 @@ p {
     }
     .products {
         margin-top: 6em;
+        .arrow { width: 60px; height: 60px; }
+        &-description { margin: 30px 10px; }
     }
     .faq {
         &__wrapper { padding: 31px; }
         .question { width: 250px; }
     }
-    .contacts { margin-top: 6em; &__right { display: none; } }
+    .contacts { 
+        margin-top: 6em; 
+        &__right { display: none; }
+    }
     .footer { 
         &__left { margin: 0; }
         &__right { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: space-around;
+            gap: 30px;
         } 
         .webpage-links { width: 42%; }
     }
 }
-@media screen and (max-width: 374px) {}
+@media screen and (max-width: 374px) {
+    .header {
+        &__logo { width: 125px; }
+        svg { width: 60%; }
+        .btn { width: 128px; }
+
+    }
+    .products {
+        &-description { margin: 30px 10px; }
+    }
+}
