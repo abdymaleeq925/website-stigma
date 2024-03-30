@@ -80,4 +80,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+
+    const arrow = document.querySelectorAll('.arrow');
+    arrow.forEach((btn) => { 
+        btn.addEventListener('click', () => {
+            btn.style.backgroundColor = '#3285ff';
+            setTimeout (() => {
+                btn.style.backgroundColor = '#f8f9ff'}, 100)
+        })
+    })
 })
